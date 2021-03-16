@@ -1,3 +1,21 @@
+<?php
+    include 'db_connection.php';
+
+
+
+
+        $data = $pdo->query( "SELECT `name`,`avatar`,`health`,`bio`,`color`,`defense`,`weapon`,`armor` FROM `characters`" );
+        $CharData = $data->fetch();
+
+
+        while($CharData = $data->fetch())
+        {
+                echo $CharData[name];
+
+        }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +25,7 @@
     <link href="resources/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<header><h1>Alle [X] characters uit de database</h1>
+<header><h1>Alle <?php echo $aantal ?> characters uit de database</h1>
 
 </header>
 <div id="container">
