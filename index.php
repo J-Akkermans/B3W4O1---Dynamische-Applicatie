@@ -2,8 +2,8 @@
     include 'db_connection.php';
     $amount = $pdo->query( "SELECT count(id) as AMOUNT FROM `characters`" );
     $COUNT = $amount->fetch();
-    $data = $pdo->query( "SELECT `id`,`name`,`attack`,`avatar`,`health`,`color`,`defense`,`weapon`,`armor` FROM `characters`" );
 
+    $data = $pdo->query( "SELECT `id`,`name`,`attack`,`avatar`,`health`,`defense` FROM `characters` ORDER BY `characters`.`name` ASC" );
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +18,12 @@
 <header><h1>Alle <?php echo $aantal ?> characters uit de database</h1>
 
 </header>
+<div id="container">
 <?php 
 while($CharData = $data->fetch())
 {
     
     ?>
-<div id="container">
     <a class="item" href="character.php?id=<?php echo $CharData['id'] ?>">
         <div class="left">
             <img class="avatar" src="resources/images/<?php echo $CharData['avatar'] ?>">
@@ -40,10 +40,11 @@ while($CharData = $data->fetch())
         </div>
         <div class="detailButton"><i class="fas fa-search"></i> bekijk</div>
     </a>
-</div>
-<?php
+    <?php
 }
 ?>
+</div>
+
 <footer>&copy; Jenna Akkermans 2021</footer>
 </body>
 </html>

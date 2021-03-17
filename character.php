@@ -3,8 +3,6 @@
     $id = $_GET['id'];
     $data = $pdo->query( "SELECT * FROM `characters` WHERE id='$id'" );
     $CharData = $data-> fetch();
-
-    echo $CharData['id'];
 ?>
 
 <!DOCTYPE html>
@@ -46,12 +44,12 @@
         </div>
         <div class="right">
             <p>
-                <?php echo $CharData['bio']?>
+                <?php echo nl2br($CharData['bio']);?>
             </p>
         </div>
         <div style="clear: both"></div>
     </div>
 </div>
-<footer>&copy; [jenaam] 2020</footer>
+<footer>&copy; Jenna Akkermans 2021</footer>
 </body>
 </html>
